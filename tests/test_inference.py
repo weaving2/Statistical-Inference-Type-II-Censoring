@@ -5,6 +5,9 @@ from src.inference import (
     total_time_on_test,
     mle,
     naive_estimator,
+    exact_confidence_interval,
+    wald_confidence_interval,
+    log_wald_confidence_interval,
 )
 
 
@@ -31,6 +34,26 @@ class TestInference(unittest.TestCase):
             naive_estimator(times, 3),
             np.mean([3, 5, 8]),
         )
+    def test_no_censoring_ttt(self):
+        times = [3, 5, 8, 12, 20]
+        self.assertEqual(total_time_on_test(times, 5), sum(times))
+
+    def test_exact_interval_positive(self):
+        lower, upper = exact_confidence_interval(32, 3)
+        self.assertGreater(lower, 0)
+        self.assertGreater(upper, lower)
+
+    def test_wald_interval_centered_at_mle(self):
+        lower, upper = wald_confidence_interval(32, 3)
+        theta_hat = mle(32, 3)
+
+        self.assertAlmostEqual((lower + upper) / 2, theta_hat)
+
+    def test_log_wald_interval_positive(self):
+        lower, upper = log_wald_confidence_interval(32, 3)
+
+        self.assertGreater(lower, 0)
+        self.assertGreater(upper, lower)
 
 
 if __name__ == "__main__":
