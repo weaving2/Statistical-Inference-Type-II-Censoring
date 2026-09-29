@@ -6,9 +6,9 @@ simulation, and a model-misspecification study.
 
 ## Problem
 
-Suppose \(n\) components are tested simultaneously and the experiment stops
-after the \(r\)-th failure. The first \(r\) failure times are observed exactly,
-while the remaining \(n-r\) units are known only to have survived beyond the
+Suppose $n$ components are tested simultaneously and the experiment stops
+after the $r$-th failure. The first $r$ failure times are observed exactly,
+while the remaining $n-r$ units are known only to have survived beyond the
 stopping time.
 
 The goal is to estimate the exponential mean lifetime while properly using the
@@ -28,7 +28,7 @@ The project includes:
 
 ## Main Results
 
-For \(n=50\), \(r=10\), and a true mean lifetime of 5000 hours:
+For $n=50$, $r=10$, and a true mean lifetime of 5000 hours:
 
 - Exact 95% interval coverage: **94.87%**
 - Wald 95% interval coverage: **90.13%**
@@ -66,3 +66,6 @@ estimation bias and coverage error.
 ├── simulate.py
 ├── requirements.txt
 └── README.md
+```
+## Translation
+This project was translated from spanish to english using AI.
